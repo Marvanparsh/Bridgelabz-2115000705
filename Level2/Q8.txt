@@ -1,0 +1,66 @@
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of students: ");
+        int numOfStudents = scanner.nextInt();
+        double[][] marks = new double[numOfStudents][3];
+        double[] percentages = new double[numOfStudents];
+        String[] grades = new String[numOfStudents];
+        for (int i = 0; i < numOfStudents; i++) {
+            System.out.println("Student " + (i + 1));
+            double physics, chemistry, maths;
+            do {
+                System.out.print("Enter marks for Physics (0-100): ");
+                physics = scanner.nextDouble();
+                if (physics < 0 || physics > 100) {
+                    System.out.println("Marks must be between 0 and 100.");
+                }
+            } while (physics < 0 || physics > 100);
+            do {
+                System.out.print("Enter marks for Chemistry (0-100): ");
+                chemistry = scanner.nextDouble();
+                if (chemistry < 0 || chemistry > 100) {
+                    System.out.println("Marks must be between 0 and 100.");
+                }
+            } while (chemistry < 0 || chemistry > 100);
+            do {
+                System.out.print("Enter marks for Maths (0-100): ");
+                maths = scanner.nextDouble();
+                if (maths < 0 || maths > 100) {
+                    System.out.println("Marks must be between 0 and 100.");
+                }
+            } while (maths < 0 || maths > 100);
+            marks[i][0] = physics;
+            marks[i][1] = chemistry;
+            marks[i][2] = maths;
+            double totalMarks = physics + chemistry + maths;
+            percentages[i] = (totalMarks / 300) * 100;
+            if (percentages[i] >= 80) {
+                grades[i] = "A (Level 4, above agency-normalized standards)";
+            } else if (percentages[i] >= 70) {
+                grades[i] = "B (Level 3, at agency-normalized standards)";
+            } else if (percentages[i] >= 60) {
+                grades[i] = "C (Level 2, below, but approaching agency-normalized standards)";
+            } else if (percentages[i] >= 50) {
+                grades[i] = "D (Level 1, well below agency-normalized standards)";
+            } else if (percentages[i] >= 40) {
+                grades[i] = "E (Level 1-, too below agency-normalized standards)";
+            } else {
+                grades[i] = "R (Remedial standards)";
+            }
+        }
+        System.out.println("\nResults of each student:");
+        for (int i = 0; i < numOfStudents; i++) {
+            System.out.println("\nStudent " + (i + 1) + ":");
+            System.out.println("Physics: " + marks[i][0]);
+            System.out.println("Chemistry: " + marks[i][1]);
+            System.out.println("Maths: " + marks[i][2]);
+            System.out.println("Percentage: " + percentages[i] + "%");
+            System.out.println("Grade: " + grades[i]);
+        }
+        scanner.close();
+    }
+}
+

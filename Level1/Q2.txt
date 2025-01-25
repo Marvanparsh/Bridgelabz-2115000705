@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = new int[5];
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter 5 numbers:");
+        for (int i = 0; i < 5; i++) numbers[i] = scanner.nextInt();
+        for (int num : numbers) {
+            if (num > 0) System.out.println(num + " is positive and " + (num % 2 == 0 ? "even." : "odd."));
+            else if (num < 0) System.out.println(num + " is negative.");
+            else System.out.println(num + " is zero.");
+        }
+        int first = numbers[0], last = numbers[4];
+        System.out.println("First element (" + first + ") is " + 
+                           (first > last ? "greater than" : first < last ? "less than" : "equal to") + 
+                           " last element (" + last + ").");
+        scanner.close();
+    }
+}
+
